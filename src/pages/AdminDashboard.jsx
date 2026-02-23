@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../app/AuthContext.jsx'
 
 export default function AdminDashboard() {
@@ -36,9 +37,12 @@ export default function AdminDashboard() {
         <div className="card-inner">
           <div className="pill">Admin Dashboard</div>
           <h2 style={{ marginTop: 10, marginBottom: 6 }}>Welcome, {currentUser?.name}</h2>
-          <p className="muted" style={{ margin: 0 }}>
-            Chunk 3 deliverable: Admin can approve/reject sellers. (Products/orders next chunks.)
-          </p>
+          <p className="muted" style={{ margin: 0 }}>Sellers, products, orders aur complaints manage karein.</p>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 12 }}>
+            <Link className="btn" to="/admin/products">Products</Link>
+            <Link className="btn" to="/admin/orders">Orders</Link>
+            <Link className="btn" to="/admin/complaints">Complaints</Link>
+          </div>
           {message ? (
             <div className="pill" style={{ marginTop: 12, color: 'white' }}>
               {message}

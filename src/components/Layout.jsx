@@ -50,6 +50,26 @@ export default function Layout() {
                 <Link className="btn" to={dashboardPath()}>
                   Dashboard
                 </Link>
+                {currentUser.role === Roles.BUYER && (
+                  <>
+                    <Link className="btn" to="/buyer/catalog">Catalog</Link>
+                    <Link className="btn" to="/buyer/cart">Cart</Link>
+                    <Link className="btn" to="/buyer/orders">My Orders</Link>
+                  </>
+                )}
+                {currentUser.role === Roles.SELLER && currentUser.verificationStatus === 'verified' && (
+                  <>
+                    <Link className="btn" to="/seller/products">Products</Link>
+                    <Link className="btn" to="/seller/orders">Orders</Link>
+                  </>
+                )}
+                {currentUser.role === Roles.ADMIN && (
+                  <>
+                    <Link className="btn" to="/admin/products">Products</Link>
+                    <Link className="btn" to="/admin/orders">Orders</Link>
+                    <Link className="btn" to="/admin/complaints">Complaints</Link>
+                  </>
+                )}
                 <span className="pill" title={currentUser.email}>
                   {currentUser.role.toUpperCase()} · {currentUser.name}
                 </span>

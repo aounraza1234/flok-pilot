@@ -85,9 +85,14 @@ export function AuthProvider({ children }) {
     logout()
   }
 
+  function refreshDb() {
+    setRefreshKey((k) => k + 1)
+  }
+
   const value = useMemo(
     () => ({
       currentUser,
+      refreshKey,
       login,
       logout,
       registerBuyerAndLogin,
@@ -98,6 +103,7 @@ export function AuthProvider({ children }) {
       getAllSellers,
       isSellerVerified,
       devResetDb,
+      refreshDb,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [currentUser, refreshKey]
